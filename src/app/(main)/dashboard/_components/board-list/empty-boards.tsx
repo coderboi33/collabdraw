@@ -6,11 +6,13 @@ import Image from "next/image";
 import { api } from "../../../../../../convex/_generated/api";
 import { useOrganization } from "@clerk/clerk-react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function EmptyBoards() {
 
     const { organization } = useOrganization();
     const create = useMutation(api.board.create);
+    const router = useRouter();
 
 
     const handleCreateBoard = async () => {
@@ -25,7 +27,7 @@ export default function EmptyBoards() {
             title: "New Board",
         }).then((id) => {
             toast.success("Board created successfully!");
-            //todo redirect to the new board page
+            router.push(`/board/${id}`);
             console.log("Board created with ID:", id);
         }).catch((error) => {
             console.error("Error creating board:", error);

@@ -19,7 +19,7 @@ interface BoardListProps {
 }
 
 export default function BoardList({ orgId, query }: BoardListProps) {
-    const data = useQuery(api.boards.get, { orgId });
+    const data = useQuery(api.boards.get, { orgId, ...query });
 
     if (data === undefined) {
         return (
@@ -62,7 +62,7 @@ export default function BoardList({ orgId, query }: BoardListProps) {
                         updatedAt={board.updatedAt}
                         createdAt={board.createdAt}
                         orgId={board.orgId}
-                        isFavourite={true}
+                        isFavourite={board.isfavourite}
                     />
                 ))}
             </div>

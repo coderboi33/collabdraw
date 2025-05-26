@@ -67,13 +67,12 @@ export default function BoardCard({
             </div>
             <div>
                 <Footer
-                    isFavourite={isFavourite}
-
+                    id={id}
+                    orgId={orgId}
                     title={title}
-                    authorLabel={authorLabel}
-                    createdAtLabel={createdAtLabel} // Handle click event here if needed
-                    disabled={false} // Set to true if you want to disable the button
-                    onToggleFavourite={() => console.log("Toggle favourite")}
+                    authorName={authorLabel}
+                    createdAt={createdAtLabel}
+                    isFavourite={isFavourite}
                 />
             </div>
         </Link>

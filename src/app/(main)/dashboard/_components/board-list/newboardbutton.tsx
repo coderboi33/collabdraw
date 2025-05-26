@@ -6,6 +6,7 @@ import { useMutation } from "convex/react";
 import Image from "next/image";
 import { api } from "../../../../../../convex/_generated/api";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface newBoardButtonProps {
     orgId: string;
@@ -18,6 +19,7 @@ export function NewBoardButton({
 }: newBoardButtonProps) {
 
     const create = useMutation(api.board.create);
+    const router = useRouter();
 
     const handleCreateBoard = async () => {
         if (!orgId) {
@@ -30,7 +32,7 @@ export function NewBoardButton({
             title: "New Board",
         }).then((id) => {
             toast.success("Board created successfully!");
-            //todo redirect to the new board page
+            router.push(`/board/${id}`);
             console.log("Board created with ID:", id);
         }).catch((error) => {
             toast.error("Error creating board: ");

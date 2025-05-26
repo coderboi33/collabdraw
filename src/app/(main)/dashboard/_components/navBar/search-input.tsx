@@ -11,10 +11,12 @@ export default function SearchInput() {
 
     const router = useRouter();
     const [value, setValue] = useState<string>("");
-    const debouncedValue = useDebounceValue(value, 500);
+    const debouncedValue = useDebounceValue(value, 2000);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
+        e.preventDefault();
+        e.stopPropagation();
     }
     useEffect(() => {
         const url = qs.stringifyUrl({
