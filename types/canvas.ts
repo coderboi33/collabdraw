@@ -30,14 +30,14 @@ export type EllipseLayer = {
     type: LayerType.Ellipse;
     x: number;
     y: number;
-    radiusX: number;
-    radiusY: number;
+    width: number;
+    height: number;
     fill: color;
     value?: string; // For text or note layers
 }
 
 export type PathLayer = {
-    type: LayerType.Rectangle;
+    type: LayerType.Path;
     x: number;
     y: number;
     width: number;
@@ -54,7 +54,7 @@ export type TextLayer = {
     width: number;
     height: number;
     fill: color;
-    value: string; // Text content
+    value?: string; // Text content
 }
 
 export type NoteLayer = {
@@ -128,4 +128,4 @@ export enum CanvasMode {
     Pencil,
 }
 
-export type Layer = RectangleLayer | EllipseLayer | TextLayer | NoteLayer;
+export type Layer = RectangleLayer | EllipseLayer | TextLayer | NoteLayer | PathLayer;

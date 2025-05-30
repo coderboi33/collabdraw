@@ -23,7 +23,9 @@ export default function Room({
         <RoomProvider id={roomId}
             initialPresence={{
                 cursor: null,
-                selection: []
+                selection: [],
+                pencilDraft: null,
+                pencilColor: { r: 0, g: 0, b: 0 }
             }}
             initialStorage={{
                 layers: new LiveMap<string, LiveObject<Layer>>(),

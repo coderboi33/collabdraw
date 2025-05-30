@@ -1,6 +1,6 @@
 "use client";
 
-import { Pencil, Square, Circle, Eraser, MousePointer2, StickyNote, Type, Undo, Redo } from "lucide-react";
+import { Pencil, Square, Circle, MousePointer2, StickyNote, Type, Undo, Redo } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ToolButton } from "./toolButton";
 import { CanvasMode, CanvasState, LayerType } from "../../../../../../types/canvas";
@@ -77,13 +77,13 @@ export function Toolbar({ canvasState, setCanvasState, undo, redo, canUndo, canR
                         canvasState.layerType === LayerType.Ellipse
                     }
                 />
-                <ToolButton
+                {/* <ToolButton
                     label="Eraser"
                     icon={Eraser}
                     onClick={() => console.log("Eraser tool clicked")}
                     isActive={false} // Assuming Eraser is not the active tool
                 //TODO eraser funtionality
-                />
+                /> */}
                 <ToolButton
                     label="Text"
                     icon={Type}
@@ -117,13 +117,13 @@ export function Toolbar({ canvasState, setCanvasState, undo, redo, canUndo, canR
                 <ToolButton
                     label="Undo"
                     icon={Undo}
-                    onClick={() => console.log("Undo clicked")}
+                    onClick={() => { undo?.() }}
                     disabled={!canUndo}
                 />
                 <ToolButton
                     label="Redo"
                     icon={Redo}
-                    onClick={() => console.log("Redo clicked")}
+                    onClick={() => { redo?.() }}
                     disabled={!canRedo}
                 />
             </div>
