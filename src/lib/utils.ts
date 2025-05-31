@@ -156,6 +156,7 @@ export function penPointToPathLayer(points: number[][], color: color): PathLayer
     height: bottom - top,
     fill: color,
     points: points
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .map(([X, y, pressure]) => [X - left, y - top]),
     value: "",
   }
