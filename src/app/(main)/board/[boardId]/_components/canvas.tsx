@@ -123,6 +123,7 @@ export default function Canvas({ boardId }: CanvasProps) {
     }, [])
 
     const startDrawing = useMutation(({ setMyPresence }, point: Point, pressure: number) => {
+        console.log("startDrawing", canvasState.mode);
         if (canvasState.mode !== CanvasMode.Pencil) {
             return;
         }
@@ -131,10 +132,11 @@ export default function Canvas({ boardId }: CanvasProps) {
             pencilDraft: [[point.x, point.y, pressure]],
             pencilColor: lastUsedColor,
         })
-    }, []);
+    }, [canvasState.mode, lastUsedColor]);
 
 
     const insertPath = useMutation(({ storage, self, setMyPresence }) => {
+        console.log("insertPath");
         const liveLayers = storage.get("layers");
         const { pencilDraft } = self.presence;
         if (pencilDraft == null || pencilDraft.length < 2 || liveLayers.size >= MAX_LIMIT) {
@@ -161,7 +163,7 @@ export default function Canvas({ boardId }: CanvasProps) {
     }, [lastUsedColor]);
 
     const continueDrawing = useMutation(({ self, setMyPresence }, point: Point, e: React.PointerEvent) => {
-        e.preventDefault();
+        console.log("continueDrawing");
         const { pencilDraft } = self.presence;
         if (canvasState.mode !== CanvasMode.Pencil || e.buttons !== 1 || pencilDraft == null) {
             return;
