@@ -15,9 +15,11 @@ interface ActionsProps {
     sideOffset?: DropdownMenuContentProps["sideOffset"];
     id: Id<"boards">;
     title: string;
+    isFavourite?: boolean;
+    orgId: string;
 };
 
-export function Actions({ children, side, sideOffset, id, title }: ActionsProps) {
+export function Actions({ children, side, sideOffset, id, title, isFavourite, orgId }: ActionsProps) {
     const remove = useMutation(api.board.remove);
     const { onOpen } = useRenameModel();
 
@@ -52,6 +54,34 @@ export function Actions({ children, side, sideOffset, id, title }: ActionsProps)
         console.log("Rename model opened with id:", id);
     }
 
+    const favourite = useMutation(api.board.favourite);
+    const unfavourite = useMutation(api.board.unfavourite);
+
+    const handleToggleFavourite = () => {
+        if (isFavourite) {
+            unfavourite({ id, orgId })
+                .then(() => {
+                    toast.success("Board unfavourited!");
+                    console.log("Board unfavourited with ID:", id);
+                })
+                .catch((error) => {
+                    toast.error("Error unfavouriting board.");
+                    console.error("Error unfavouriting board:", error);
+                });
+        }
+        else {
+            favourite({ id, orgId })
+                .then(() => {
+                    toast.success("Board favourited!");
+                    console.log("Board favourited with ID:", id);
+                })
+                .catch((error) => {
+                    toast.error("Error favouriting board.");
+                    console.error("Error favouriting board:", error);
+                });
+        }
+    }
+
 
     return (
         <DropdownMenu>
@@ -83,14 +113,22 @@ export function Actions({ children, side, sideOffset, id, title }: ActionsProps)
                     <Pencil className="mr-2" />
                     Rename
                 </DropdownMenuItem>
-                <DropdownMenuItem className="p-2 hover:bg-gray-100 cursor-pointer">
-                    Add to Favourites
-                    <Star className="ml-2 text-yellow-500" />
+                <DropdownMenuItem className="p-2 hover:bg-gray-100 cursor-pointer" onClick={handleToggleFavourite}>
+                    <span className="flex items-center">
+                        {isFavourite ? (
+                            <>
+                                <Star className="mr-2 text-yellow-500 fill-yellow-500" />
+                                Remove from Favourites
+                            </>
+                        ) : (
+                            <>
+                                <Star className="mr-2 text-gray-400" />
+                                Add to Favourites
+                            </>
+                        )}
+                    </span>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="p-2 hover:bg-gray-100 cursor-pointer">
-                    Remove from Favourites
-                    <Star className="ml-2 text-gray-400" />
-                </DropdownMenuItem>
+
             </DropdownMenuContent>
         </DropdownMenu>
     );

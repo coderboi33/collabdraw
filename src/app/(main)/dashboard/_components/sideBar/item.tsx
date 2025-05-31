@@ -29,8 +29,13 @@ export default function SideBarItem({
     };
 
     return (
-        <div className="aspect-square relative w-[48px] flex items-center justify-center">
-            <div className="relative w-[44px] h-[44px]">
+        <div className="aspect-square relative w-[48px] flex items-center justify-center group">
+            <div className={cn(
+                "relative w-[44px] h-[44px] shadow-md overflow-hidden transition-all duration-300",
+                idActive
+                    ? "border-2 border-green-600 ring-2 ring-green-500 bg-green-50 rounded-xl"
+                    : "border-0 rounded-none"
+            )}>
                 <Image
                     src={imageUrl}
                     alt={name}
@@ -38,7 +43,7 @@ export default function SideBarItem({
                     sizes="44px"
                     onClick={onClick}
                     className={cn(
-                        "rounded-md cursor-pointer opacity-75 hover:opacity-100 transition-all duration-300 object-cover",
+                        "object-cover w-full h-full cursor-pointer opacity-90 group-hover:opacity-100 transition-all duration-300 rounded-none",
                         idActive && "opacity-100"
                     )}
                 />

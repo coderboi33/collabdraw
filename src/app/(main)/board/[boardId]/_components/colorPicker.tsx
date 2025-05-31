@@ -15,42 +15,50 @@ export function ColorPicker({ onChange }: ColorPickerProps) {
             <ColorButton
                 color={{ r: 243, g: 30, b: 10 }}
                 onClick={onChange}
-                hint="Red/Orange"
+                hint="Red"
+                side="top"
             />
             <ColorButton
                 color={{ r: 34, g: 197, b: 94 }}
                 onClick={onChange}
                 hint="Green"
+                side="top"
             />
             <ColorButton
                 color={{ r: 59, g: 130, b: 246 }}
                 onClick={onChange}
                 hint="Blue"
+                side="top"
             />
             <ColorButton
                 color={{ r: 250, g: 204, b: 21 }}
                 onClick={onChange}
                 hint="Yellow"
+                side="top"
             />
             <ColorButton
                 color={{ r: 0, g: 0, b: 0 }}
                 onClick={onChange}
                 hint="Black"
+                side="bottom"
             />
             <ColorButton
                 color={{ r: 255, g: 255, b: 255 }}
                 onClick={onChange}
                 hint="White"
+                side="bottom"
             />
             <ColorButton
                 color={{ r: 168, g: 85, b: 247 }}
                 onClick={onChange}
                 hint="Purple"
+                side="bottom"
             />
             <ColorButton
                 color={{ r: 251, g: 146, b: 60 }}
                 onClick={onChange}
                 hint="Orange"
+                side="bottom"
             />
         </div>
     )
@@ -60,8 +68,9 @@ interface ColorButtonProps {
     color: color;
     onClick: (color: color) => void;
     hint?: string;
+    side?: "top" | "bottom";
 }
-function ColorButton({ color, onClick, hint }: ColorButtonProps) {
+function ColorButton({ color, onClick, hint, side }: ColorButtonProps) {
 
 
     const unselectLayer = useMutation(({ self, setMyPresence }) => {
@@ -87,7 +96,7 @@ function ColorButton({ color, onClick, hint }: ColorButtonProps) {
                 </button>
             </TooltipTrigger>
             {hint && (
-                <TooltipContent side="top">
+                <TooltipContent side={side || "top"}>
                     {hint}
                 </TooltipContent>
             )}

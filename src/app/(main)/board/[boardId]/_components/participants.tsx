@@ -14,7 +14,8 @@ export function Participants() {
     const hasMoreUsers = users.length > maxVisibleUsers;
 
     return (
-        <div className="absolute top-2 right-2 text-black bg-white rounded-md px-1.5 h-12 flex items-center shadow-md">
+        <div className="absolute top-4 right-4 z-20 flex items-center gap-3 bg-blue-200/90 backdrop-blur-md shadow-3xl shadow-blue-300/60 rounded-2xl px-5 py-2 min-h-14 transition-all">
+            <span className="font-bold text-blue-900 text-base md:text-lg tracking-wide mr-4 select-none drop-shadow-sm">Participants</span>
             {!self && !users && (
                 <div></div>
             )}

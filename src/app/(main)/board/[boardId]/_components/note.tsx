@@ -73,7 +73,6 @@ export const Note = ({ id, layer, onPointerdown, selectionColor }: NoteProps) =>
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                pointerEvents: "none" // allow ContentEditable to receive pointer events
             }}>
                 {/* Paperclip icon in the top-left corner */}
                 <span style={{

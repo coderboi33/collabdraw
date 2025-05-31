@@ -33,7 +33,7 @@ export default function OrgSidebar() {
                     <span className={cn(
                         font.className,
                         "text-2xl text-[#1E1E2F] font-semibold"
-                    )}>Board</span>
+                    )}>CollabDraw</span>
                 </div>
             </Link>
             <OrganizationSwitcher
@@ -44,10 +44,10 @@ export default function OrgSidebar() {
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                            with: "100%",
+                            width: "100%",
                         },
                         organizationSwitcherTrigger: {
-                            padding: "6px 12px",
+                            padding: "6px 12px ",
                             borderRadius: "8px",
                             width: "100%",
                             border: "1px solid #000000",
@@ -58,30 +58,41 @@ export default function OrgSidebar() {
                     }
                 }
                 } />
-            <div className="space-y-1 w-full">
+
+            <div className="w-full flex justify-center my-4">
+                <div className="w-4/5 h-[2.5px] bg-[#B0B3B8] rounded-full shadow-sm" />
+            </div>
+            <div className="space-y-3 w-full mt-2">
                 <Button
                     asChild
-                    size={"lg"}
+                    size="lg"
                     variant={favourites ? "ghost" : "secondary"}
-                    className="font-normal justify-start text-[#1E1E2F] bg-[#a1f9fc] hover:bg-[#76dde0] border border-[#000000] shadow-sm rounded-md w-full h-[44px]">
+                    className="flex items-center gap-3 font-semibold justify-start text-[#1E1E2F] bg-[#e6f7fa]/60 hover:bg-[#a1f9fc]/80 border border-[#E5E7EB] shadow-sm rounded-lg w-full h-[44px] transition-all duration-200 text-base group">
                     <Link href="/dashboard">
-                        <LayoutDashboard className="mr-2 h-4 w-4" />
-                        Team Boards
+                        <span className="flex items-center gap-2">
+                            <span className="flex items-center justify-center h-8 w-8 rounded bg-[#b2e6f2] group-hover:bg-[#76dde0] transition-colors duration-200">
+                                <LayoutDashboard className="h-4 w-4 text-[#1E1E2F]" />
+                            </span>
+                            Team Boards
+                        </span>
                     </Link>
                 </Button>
 
                 <Button
                     asChild
-                    size={"lg"}
+                    size="lg"
                     variant={favourites ? "secondary" : "ghost"}
-                    className="font-normal justify-start text-[#1E1E2F] bg-[#FFC300] hover:bg-[#c69802] border border-[#000000] shadow-sm rounded-md w-full h-[44px]">
+                    className="flex items-center gap-3 font-semibold justify-start text-[#1E1E2F] bg-[#fff7e6]/60 hover:bg-[#FFD600]/70 border border-[#E5E7EB] shadow-sm rounded-lg w-full h-[44px] transition-all duration-200 text-base group">
                     <Link href={{
                         pathname: "/dashboard",
                         query: { favourites: true }
-                    }
-                    }>
-                        <Star className="mr-2 h-4 w-4" />
-                        Favourite Boards
+                    }}>
+                        <span className="flex items-center gap-2">
+                            <span className="flex items-center justify-center h-8 w-8 rounded bg-[#ffe299] group-hover:bg-[#FFD600] transition-colors duration-200">
+                                <Star className="h-4 w-4 text-[#1E1E2F]" />
+                            </span>
+                            Favourites
+                        </span>
                     </Link>
                 </Button>
             </div>

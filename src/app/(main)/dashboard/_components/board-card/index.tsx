@@ -58,6 +58,8 @@ export default function BoardCard({
                     title={title}
                     side="bottom"
                     sideOffset={10}
+                    isFavourite={isFavourite}
+                    orgId={orgId}
                 >
                     <Button className="absolute top-2 right-2 bg-transparent hover:bg-gray-100/40 p-1 rounded-full transition z-10">
                         <MoreHorizontalIcon

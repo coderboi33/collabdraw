@@ -72,11 +72,11 @@ export const SelectionTools = memo(({ camera, setLastUsedColor }: SelectionTools
     const y = selectionBounds.y + camera.y; // top of selection
 
     return (
-        <div className="fixed p-3 rounded-xl text-black bg-white/50 shadow-sm border flex select-none"
+        <div className="fixed p-3 rounded-xl text-black bg-white/50 shadow-md shadow-black/50 border flex select-none"
             style={{
                 left: 0,
                 top: 0,
-                transform: `translate(calc(${x}px - 50%), calc(${y}px - 48px))`, // 48px above selection
+                transform: `translate(calc(${x}px - 50%), calc(${y}px - 96px))`, // 48px above selection
                 zIndex: 50,
             }}>
             <ColorPicker
@@ -99,7 +99,7 @@ export const SelectionTools = memo(({ camera, setLastUsedColor }: SelectionTools
 
             </div>
             <div className="flex items-center gap-2">
-                <Hint label="Delete">
+                <Hint label="Delete" side="top">
                     <Button variant="board"
                         size={"icon"}
                         onClick={deleteLayers}>

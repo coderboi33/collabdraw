@@ -1,3 +1,6 @@
+//TODO: Add sorting options for boards
+
+
 "use client";
 
 import React from "react";
@@ -11,6 +14,7 @@ import BoardCard from "../board-card";
 import { NewBoardButton } from "./newboardbutton";
 
 interface BoardListProps {
+
     orgId: string;
     query: {
         search?: string;
@@ -46,9 +50,13 @@ export default function BoardList({ orgId, query }: BoardListProps) {
     console.log("query", query);
     return (
         <div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                {query.favourites ? "Favourite Boards" : "Boards"}
-            </h2>
+            <div className="flex items-center justify-between mb-2">
+                <h2 className="text-4xl font-extrabold bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent drop-shadow-lg tracking-tight m-0">
+                    {query.favourites ? "Favourite Boards" : "Boards"}
+                </h2>
+
+            </div>
+            <hr className="border-2 border-gray-300 mb-6 w-full font-extrabold" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <NewBoardButton orgId={orgId} disabled={false} />
                 {data?.map((board) => (

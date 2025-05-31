@@ -36,17 +36,17 @@ export function Info({ boardId }: InfoProps) {
     }
 
     return (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-5 py-2 px-2">
             <Hint label="Go to Dashboard" side="bottom" sideOffset={10}>
-                <Button asChild variant="board" className="px-2 pl-2">
-                    <Link href={`/dashboard`} className="flex items-center gap-2">
+                <Button asChild variant="board" className="px-3 pl-3 py-2">
+                    <Link href={`/dashboard`} className="flex items-center gap-3">
                         <Image
                             src="/logo.svg"
                             alt="Logo"
-                            width={50}
-                            height={50}></Image>
+                            width={60}
+                            height={60}></Image>
                         <span className={cn(
-                            "font-semibold text-xl text-black",
+                            "font-semibold text-2xl text-black",
                             font.className,
                         )
                         }>
@@ -55,12 +55,12 @@ export function Info({ boardId }: InfoProps) {
                     </Link>
                 </Button>
             </Hint>
-            <span className="text-neutral-300 text-xl px-2 select-none">|</span>
+            <span className="text-neutral-300 text-2xl px-3 select-none">|</span>
             <Hint label="Change Board Title" side="bottom" sideOffset={10}>
                 <Button
                     variant="board"
                     className={cn(
-                        "px-4 py-1 text-base font-semibold rounded-md bg-neutral-100 hover:bg-neutral-200 transition-colors border border-neutral-200 shadow-sm",
+                        "px-6 py-2 text-lg font-semibold rounded-lg bg-neutral-100 hover:bg-neutral-200 transition-colors border border-neutral-200 shadow-sm",
                         font.className
                     )}
                     onClick={() => onOpen(data._id, data.title)}
@@ -68,7 +68,7 @@ export function Info({ boardId }: InfoProps) {
                     {data.title}
                 </Button>
             </Hint>
-            <span className="text-neutral-300 text-xl px-2 select-none">|</span>
+            <span className="text-neutral-300 text-2xl px-3 select-none">|</span>
             <Actions
                 id={data._id}
                 title={data.title}
@@ -76,8 +76,8 @@ export function Info({ boardId }: InfoProps) {
                 sideOffset={10}>
                 <div>
                     <Hint label="Main menu" side="bottom" sideOffset={10}>
-                        <Button className="bg-transparent hover:bg-neutral-200 transition-colors rounded-md p-2">
-                            <MenuIcon className="size-5 text-neutral-500" />
+                        <Button className="bg-transparent hover:bg-neutral-200 transition-colors rounded-lg p-3">
+                            <MenuIcon className="size-6 text-neutral-500" />
                         </Button>
                     </Hint>
                 </div>

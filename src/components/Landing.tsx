@@ -2,9 +2,54 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { TypewriterEffect } from "./ui/typewriter-effect";
 
 export function LandingPage() {
     const router = useRouter();
+    //realtime whiteboarding for teams. Brainstorm, plan, and create together—instantly.
+
+    const description = [
+        {
+            text: "Collaborative",
+            className: "text-lg sm:text-2xl font-extrabold text-blue-700 text-center mb-2 max-w-xl drop-shadow-md tracking-wide",
+        },
+        {
+            text: "realtime",
+            className: "text-lg sm:text-2xl font-extrabold text-blue-700 text-center mb-2 max-w-xl drop-shadow-md tracking-wide"
+        },
+        {
+            text: "whiteboarding",
+            className: "text-lg sm:text-2xl font-extrabold text-blue-700 text-center mb-2 max-w-xl drop-shadow-md tracking-wide"
+        },
+        {
+            text: "for",
+            className: "text-lg sm:text-xl font-semibold text-blue-700 text-center mb-2 max-w-xl tracking-wide"
+        },
+        {
+            text: "teams.",
+            className: "text-lg sm:text-xl font-semibold text-blue-700 text-center mb-4 max-w-xl tracking-wide"
+        },
+        {
+            text: "Brainstorm,",
+            className: "text-base sm:text-lg italic font-semibold text-blue-700 text-center mb-1 max-w-xl tracking-wide"
+        },
+        {
+            text: "plan,",
+            className: "text-base sm:text-lg italic font-semibold text-blue-700 text-center mb-1 max-w-xl tracking-wide"
+        },
+        {
+            text: "and",
+            className: "text-base sm:text-lg italic font-medium text-blue-700 text-center mb-1 max-w-xl tracking-wide"
+        },
+        {
+            text: "create",
+            className: "text-base sm:text-lg italic font-semibold text-blue-700 text-center mb-1 max-w-xl tracking-wide"
+        },
+        {
+            text: "together—instantly.",
+            className: "text-base sm:text-lg italic font-semibold text-blue-700 text-center mb-2 max-w-xl tracking-wide"
+        },
+    ]
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-between relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-100 px-2 sm:px-4 py-0 sm:py-8">
@@ -38,10 +83,10 @@ export function LandingPage() {
                     <h1 className="text-4xl sm:text-6xl font-extrabold text-blue-900 text-center leading-tight drop-shadow-xl">
                         Visual Collaboration<br className="hidden sm:block" />Made Effortless
                     </h1>
-                    <p className="text-lg sm:text-xl text-blue-800 text-center mb-4 max-w-xl font-medium drop-shadow-sm">
-                        Instantly brainstorm, plan, and create together on a real-time whiteboard.<br className="hidden sm:block" />
-                        CollabDraw brings your ideas to life—wherever you are.
-                    </p>
+                    {/* <p className="text-lg sm:text-xl text-blue-800 text-center mb-4 max-w-xl font-medium drop-shadow-sm">
+                        <span className="font-bold text-blue-700">Collaborative realtime</span> whiteboarding for teams. Brainstorm, plan, and create together—instantly.
+                    </p> */}
+                    <TypewriterEffect words={description} />
                     <button
                         onClick={() => router.push('/auth/sign-up')}
                         className="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-xl text-xl transition mb-2"

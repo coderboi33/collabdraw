@@ -1,3 +1,5 @@
+//TODO: export as image, export as pdf
+
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -121,7 +123,6 @@ export default function Canvas({ boardId }: CanvasProps) {
     }, [])
 
     const startDrawing = useMutation(({ setMyPresence }, point: Point, pressure: number) => {
-        console.log("startDrawing", point, pressure);
         if (canvasState.mode !== CanvasMode.Pencil) {
             return;
         }
@@ -160,6 +161,7 @@ export default function Canvas({ boardId }: CanvasProps) {
     }, [lastUsedColor]);
 
     const continueDrawing = useMutation(({ self, setMyPresence }, point: Point, e: React.PointerEvent) => {
+        e.preventDefault();
         const { pencilDraft } = self.presence;
         if (canvasState.mode !== CanvasMode.Pencil || e.buttons !== 1 || pencilDraft == null) {
             return;
@@ -412,6 +414,12 @@ export default function Canvas({ boardId }: CanvasProps) {
         <main className="h-full w-full touch-none relative text-white">
             <Info boardId={boardId} />
             <Participants />
+            {/* <ExportComponent>
+                <div className="absolute top-24 right-6 z-30 flex items-center gap-3 bg-white/90 backdrop-blur-lg shadow-2xl shadow-blue-200/60 rounded-xl px-4 py-2 min-h-12 transition-all border border-blue-300">
+                    <Upload className="text-blue-900 w-5 h-5" />
+                    <span className="font-bold text-blue-900 text-sm md:text-base tracking-wide select-none drop-shadow-sm">Export</span>
+                </div>
+            </ExportComponent> */}
             <Toolbar
                 canvasState={canvasState}
                 setCanvasState={setCanvasState}
@@ -427,7 +435,7 @@ export default function Canvas({ boardId }: CanvasProps) {
             <SelectionTools
                 camera={camera}
                 setLastUsedColor={setLastUsedColor} />
-            <svg className="h-[100vh] w-[100vw]"
+            <svg className="h-[100vh] w-[100vw] bg-gray-100"
                 onWheel={onWheel}
                 onPointerMove={onPointerMove}
                 onPointerLeave={onPointerLeave}

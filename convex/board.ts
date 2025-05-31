@@ -100,9 +100,7 @@ export const favourite = mutation({
         if (!board) {
             throw new Error("Board not found");
         }
-        if (board.authorId !== identity.subject) {
-            throw new Error("Not authorized to favorite this board");
-        }
+
         const existingFavourite = await ctx.db.query("userFavourites")
             .withIndex("byuserboardid", (q) =>
                 q.eq("userId", identity.subject)
@@ -136,9 +134,7 @@ export const unfavourite = mutation({
         if (!board) {
             throw new Error("Board not found");
         }
-        if (board.authorId !== identity.subject) {
-            throw new Error("Not authorized to unfavorite this board");
-        }
+
         const existingFavourite = await ctx.db.query("userFavourites")
             .withIndex("byuserboardid", (q) =>
                 q.eq("userId", identity.subject)

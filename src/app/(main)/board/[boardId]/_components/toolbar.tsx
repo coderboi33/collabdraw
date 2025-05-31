@@ -19,7 +19,7 @@ export function Toolbar({ canvasState, setCanvasState, undo, redo, canUndo, canR
 
     return (
         <div className="fixed bottom-4 left-[52%] transform -translate-x-1/2 flex items-center gap-4">
-            <div className="bg-[#e0e0e0] rounded-2xl px-8 py-2 h-auto flex items-center gap-8 shadow-2xl border border-[#e0e0e0]">
+            <div className="bg-[#e0e0e0] rounded-2xl px-8 py-2 h-auto flex items-center gap-8 shadow-lg shadow-black/40 put here border border-[#e0e0e0]">
                 <ToolButton
                     label="Select"
                     icon={MousePointer2}
@@ -113,7 +113,7 @@ export function Toolbar({ canvasState, setCanvasState, undo, redo, canUndo, canR
                     }
                 />
             </div>
-            <div className="bg-[#e0e0e0] rounded-2xl px-4 py-1 h-auto flex items-center gap-4 shadow-2xl border border-[#e0e0e0]">
+            <div className="bg-[#e0e0e0] rounded-2xl px-4 py-1 h-auto flex items-center gap-4 border shadow-lg shadow-black/40 border-[#e0e0e0]">
                 <ToolButton
                     label="Undo"
                     icon={Undo}
