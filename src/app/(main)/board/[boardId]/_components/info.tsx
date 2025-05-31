@@ -73,7 +73,8 @@ export function Info({ boardId }: InfoProps) {
                 id={data._id}
                 title={data.title}
                 side="bottom"
-                sideOffset={10}>
+                sideOffset={10}
+                orgId={data.orgId}>
                 <div>
                     <Hint label="Main menu" side="bottom" sideOffset={10}>
                         <Button className="bg-transparent hover:bg-neutral-200 transition-colors rounded-lg p-3">
