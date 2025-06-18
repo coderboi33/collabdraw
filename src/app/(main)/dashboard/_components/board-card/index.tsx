@@ -29,7 +29,6 @@ export default function BoardCard({
     imageUrl,
     authorName,
     authorId,
-    updatedAt,
     createdAt,
     orgId,
     isFavourite, }: BoardCardProps) {
@@ -40,7 +39,6 @@ export default function BoardCard({
         addSuffix: true
     })
 
-    console.log(updatedAt, createdAt, orgId, "updatedAt and createdAt and orgId");
 
     return (
         <Link
