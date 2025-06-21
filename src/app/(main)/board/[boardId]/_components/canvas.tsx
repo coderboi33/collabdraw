@@ -1,5 +1,3 @@
-//TODO: export as image, export as pdf
-
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -123,7 +121,6 @@ export default function Canvas({ boardId }: CanvasProps) {
     }, [])
 
     const startDrawing = useMutation(({ setMyPresence }, point: Point, pressure: number) => {
-        console.log("startDrawing", canvasState.mode);
         if (canvasState.mode !== CanvasMode.Pencil) {
             return;
         }
@@ -292,10 +289,6 @@ export default function Canvas({ boardId }: CanvasProps) {
         e.preventDefault();
         const point = pointerEventToCanvasPoint(e, camera);
 
-        console.log({
-            point,
-            mode: canvasState.mode,
-        })
         if (canvasState.mode === CanvasMode.None || canvasState.mode === CanvasMode.Pressing) {
 
             unselectLayer();

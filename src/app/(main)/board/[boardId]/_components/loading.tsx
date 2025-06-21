@@ -13,4 +13,3 @@ export function Loading() {
         </main>
     );
 }
-//TODO make the loading screen more beautiful and add a loading animation
